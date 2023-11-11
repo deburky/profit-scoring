@@ -35,7 +35,7 @@ def write_to_postgres(df, schema_name, table_name, conn_string):
             df.head(n=0).to_sql(name=table_name, con=conn, if_exists='replace', index=False)
             print("Table created \U0001f44d")
 
-        print(f"Writing original data to Postgres...")
+        print("Writing original data to Postgres...")
         df.to_sql(name=table_name, con=conn, if_exists='replace', index=False)
         print("Completed successfully \u2713")
 
