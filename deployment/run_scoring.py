@@ -11,8 +11,7 @@ def load_pickle_model_from_url(url):
     try:
         response = requests.get(url)
         response.raise_for_status()
-        model = pickle.loads(response.content)
-        return model
+        return pickle.loads(response.content)
     except requests.exceptions.RequestException as e:
         print(f"Error downloading the model: {e}")
         return None
@@ -94,7 +93,7 @@ def run():
             id_frame.head(n=0).to_sql(name=table_name, con=conn, if_exists='replace', index=False)
             print("Table created \U0001f44d")
 
-        print(f"Writing original data to Postgres...")
+        print("Writing original data to Postgres...")
         id_frame.to_sql(name=table_name, con=conn, if_exists='append', index=False)
 
         print("Completed successfully \u2713")
